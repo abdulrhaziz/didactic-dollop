@@ -1,0 +1,55 @@
+/* add your CSS here */
+#fact {
+   font-style: italic;
+}
+
+.information{
+     font-weight: bold;
+
+}
+
+
+
+#card-container {
+
+  border: 10px solid #363944;
+  padding: 5px;
+  width: 400px;
+  margin: 10px auto;
+  background-color:#cc7a00;
+
+}
+#animal-name{
+  font-size: 40px;
+
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #000005;
+  border-left: 2px solid #ffffff;
+  margin:15px auto;
+  padding: 8px;
+}
+
+#info-box {
+
+  border: 5px solid  #a1412b;
+  padding: 4px;
+  background-color: #e7dcca;
+
+
+}
+
+#card-container img {
+  width: 300px;
+  display: block;
+  margin: 10px auto;
+  margin-bottom: 10px;
+  border: 9px solid #363944;
+
+
+
+}
+
+li{
+  list-style: none;
+
+}
