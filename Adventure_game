@@ -1,0 +1,139 @@
+
+# project : Adventure Game
+
+# Imports
+import random
+import time
+
+# Functions
+
+# for making the inputs more flexible
+
+
+def valid_input(prompt, option1, option2):
+    while True:
+        player_choice = input(prompt).lower()
+        if option1 in player_choice:
+            break
+        elif option2 in player_choice:
+            break
+        else:
+            print_time("Sorry, I don't understand.")
+    return player_choice
+
+
+# gives random villain every time
+def random_villains():
+    villains = ["luke skywalker", "baby Yoda", "obi wan kenobi"]
+    villain = random.choice(villains)
+    return villain
+
+
+def print_time(text):
+    print(text)
+    time.sleep(1)
+
+
+def intro(villain):
+    print_time("You find yourself standing in an open field,")
+    print_time("filled with grass and yellow wildflowers.")
+    print_time("Rumor has it that " + villain + " is somewhere around here, ")
+    print_time("and has been terrifying the nearby village.")
+    print_time("in your hand hold your trusty but not very effctive spoon.\n")
+
+
+# game start here
+def field(villain, items):
+    print_time("""Enter 1 to knock on the door of the house.
+Enter 2 to peer into the cave.
+What would you like to do?""")
+    player_choice = input("(Please enter 1 or 2).\n")
+
+    if player_choice == "1":
+        house(villain, items)
+
+    elif player_choice == "2":
+        cave(villain, items)
+    else:
+        print_time("Please try agin!")
+        field(villain, items)
+
+
+def house(villain, items):
+    print_time("You approach the door of the house")
+    print_time("you are about to knock the door "
+               "opens and out steps " + villain + ".")
+    print_time("Eep! This is the " + villain + "'s house!")
+    if "lightsaber" in items:
+        print_time("")
+    else:
+        print_time("You feel a bit under-prepared for this,"
+                   "what with only having a tiny spoon.")
+    player_choice = valid_input("would like to (1) fight or (2) run away?!",
+                                "1", "2")
+    if "1" in player_choice:
+        fight(villain, items)
+    elif "2" in player_choice:
+        print_time("you run back to the field")
+        field(villain, items)
+
+
+def cave(villain, items):
+    if "lightsaber" in items:
+        print_time("you've been here befor and gotten all the good stuff")
+        print_time("you walk back to the field")
+        field(villain, items)
+
+    else:
+        print_time("You entered the cave 'It's warm cave!' you said")
+        print_time("you are looking around trying to find any thing "
+                   "help's you to defeat " + villain + ".")
+        print_time("'what are you doig here?' Some one said with warm voice")
+        print_time("you look behind you yes its darth veder"
+                   " the most kind and generous person in the universe")
+        print_time("you told him the story and without thinking gives you the"
+                   "one of its kind the 'lightsaber'")
+        print_time("'how can i repay you?!' you said")
+        print_time("just defeat " + villain + " that's how darth veder said")
+        print_time("you walk back to the field")
+        items.append("lightsaber")
+        field(villain, items)
+
+
+def fight(villain, items):
+    if "lightsaber" in items:
+        print_time(villain + " try to attack you but takes one look at "
+                   "your new toy and runs away!")
+        print_time("You just defeat. " + villain + " you won!")
+        play_again()
+
+    else:
+        print_time("You do your best but ")
+        print_time("your spoon is no match for the " + villain + ".")
+        print_time("You have been defeated!")
+        play_again()
+
+
+def play_again():
+    player_choice = valid_input("Would like to play again? "
+                                "(y/n)",
+                                "y", "n")
+    if "n" in player_choice:
+        print_time("Thanks for playing! see you again")
+    elif "y" in player_choice:
+        print_time("Good restarting the Game...")
+        play_game()
+
+# Whole game wrapped here
+
+
+def play_game():
+    villain = random_villains()
+    items = []
+    intro(villain)
+    field(villain, items)
+
+# Porgram
+
+if __name__ == "__main__":
+    play_game()
